@@ -1,0 +1,13 @@
+com/example/batchprocessing/CustomePersonMapper.class
+com/example/batchprocessing/BatchProcessingApplication.class
+com/example/batchprocessing/PersonItemProcessor2.class
+com/example/batchprocessing/BatchConfiguration$1.class
+com/example/batchprocessing/JobLauncherService.class
+com/example/batchprocessing/CustomRetryListener.class
+com/example/batchprocessing/PersonItemProcessor.class
+com/example/batchprocessing/CustomFileReader.class
+com/example/batchprocessing/BatchConfiguration.class
+com/example/batchprocessing/JobCompletionNotificationListener.class
+com/example/batchprocessing/Person.class
+com/example/batchprocessing/JobCompletionNotificationListener2.class
+com/example/batchprocessing/CustomFileReader$1.class

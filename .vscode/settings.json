@@ -1,0 +1,15 @@
+{
+    "maven.view": "hierarchical",
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "maven.terminal.favorites": [
+        {
+            "command": "clean install",
+            "debug": false
+        },
+        {
+            "command": "spring-boot:run",
+            "debug": false
+        }
+    ]
+}
