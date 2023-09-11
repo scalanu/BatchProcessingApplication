@@ -17,8 +17,10 @@ public class BatchProcessingApplication {
 	public static void main(String[] args) throws Exception {
 		ConfigurableApplicationContext ctx = SpringApplication.run(BatchProcessingApplication.class, args);
 		String jobToLaunch = "";
-		if(args.length > 0 && args[0].contains("Edi"))
+		if(args.length > 0 && args[0].contains("File"))
 			jobToLaunch = args[0];
+		if(!jobToLaunch.isEmpty())
+			log.info("Job to launch : "+jobToLaunch);
 		JobLauncher jobLauncher = (JobLauncher) ctx.getBean("jobLauncher");
 		Job imporUserJobBean = (Job) ctx.getBean("importUserJob");
 		Job exporUserJobBean = (Job) ctx.getBean("exportUserJob");

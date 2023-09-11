@@ -9,11 +9,16 @@ import java.io.InputStreamReader;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.sql.DataSource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.stereotype.Component;
 
 
@@ -27,7 +32,8 @@ public class JobCompletionNotificationListener2 implements JobExecutionListener 
 	String filePath = basePath + filename;
 	Set<String> events = new TreeSet<String>();
 
-	
+	@Autowired
+	private DataSource dataSource;
 	
 
 	@Override
@@ -51,10 +57,8 @@ public class JobCompletionNotificationListener2 implements JobExecutionListener 
 						   .forEach(line -> log.info("Found <{}> in the file.", line));
 				 events.add(stream.toString());
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} /* catch (EDIStreamException e) {
 				// TODO Auto-generated catch block
@@ -70,7 +74,9 @@ public class JobCompletionNotificationListener2 implements JobExecutionListener 
 
 	@Override
 	public void beforeJob(JobExecution jobExecution) {
-		// TODO Auto-generated method stub
+		// This block of code would not be required in actual environment when data is already there
+		ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator(false, false, "UTF-8", new ClassPathResource("data-person.sql"));
+	    resourceDatabasePopulator.execute(dataSource);
 		
 	}
 
